@@ -1,51 +1,20 @@
 import React from "react";
-import google from "../assets/google.png";
 import AuthBg from "./layout/AuthBg";
+import google from "../assets/google.png";
 
-const Register = () => {
+const SignIn = () => {
   return (
     <div className="w-full flex justify-center items-center gap-10 mx-auto  lg:m-20">
       <div className="w-full lg:w-[482px] p-2 ">
         <div className="w-full lg:w-[455px]">
           <h1 className="font-[Outfit] font-[600] text-[28px] text-[#181a20] ] text-center lg:text-start">
-            Join our community of home seekers and explore the possibilities
-            that await.
+            Welcome Back to BetaHouse!
           </h1>
           <p className="font-[Outfit] font-[400] text-[16px] text-[#181A20D1] text-center lg:text-start">
             Lets get started by filling out the information below
           </p>
         </div>
-        <form className="mt-10">
-          <div className="flex items-center justify-between gap-2">
-            <div className="w-full lg:w-[218px] h-[81px]">
-              <label
-                htmlFor="firstName"
-                className="font-[500] font-[Outfit] text-[16px] text-[#181A20D1]"
-              >
-                First Name
-              </label>
-              <input
-                id="firstName"
-                type="text"
-                placeholder="Enter Name"
-                className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
-              />
-            </div>
-            <div className="w-full lg:w-[218px] h-[81px]">
-              <label
-                htmlFor="lastName"
-                className="font-[500] font-[Outfit] text-[16px] text-[#181A20D1]"
-              >
-                Last Name
-              </label>
-              <input
-                id="lastName"
-                type="text"
-                placeholder="Enter Name"
-                className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
-              />
-            </div>
-          </div>
+        <form className="mt-5">
           <div className="block my-3">
             <label
               htmlFor="email"
@@ -75,20 +44,7 @@ const Register = () => {
               className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
             />
           </div>
-          <div>
-            <label
-              htmlFor="confirmPass"
-              className="font-[500] font-[Outfit] text-[16px] text-[#181A20D1]"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="text"
-              id="confirmPass"
-              placeholder="Enter your Email"
-              className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
-            />
-          </div>
+
           <div className="flex items-center gap-4 my-3">
             <input
               type="checkbox"
@@ -100,13 +56,11 @@ const Register = () => {
               htmlFor="terms"
               className="font-[500] font-[Outfit] text-[16px] text-[#181A20D1]"
             >
-              I agree to
-              <span className="text-[#3d9970]">Terms of Service</span> and
-              <span className="text-[#3d9970]"> Privacy Policies</span>
+              Remeber me
             </label>
           </div>
           <button className="w-full h-[65px] bg-[#3d9970] rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#ffffff] my-3 cursor-pointer">
-            Sign Up
+            Sign In
           </button>
           <div className="my-2">
             <p>or</p>
@@ -117,8 +71,8 @@ const Register = () => {
           </button>
         </form>
         <p className="mt-10 font-[500] font-[Outfit] text-[18px] text-[#716f6f] text-center">
-          Already have an account?
-          <span className="text-[#39dd70]">Sign In</span>
+          New User?
+          <span className="text-[#39dd70]">Sign up</span>
         </p>
       </div>
       <AuthBg />
@@ -126,4 +80,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignIn;
