@@ -1,7 +1,7 @@
 import React from "react";
-import phone from "../assets/phone.png";
-import email from "../assets/email.png";
-import whiteloc from "../assets/whiteloc.png";
+import phone from "../../assets/phone.png";
+import email from "../../assets/email.png";
+import whiteloc from "../../assets/whiteloc.png";
 const Footer = () => {
   return (
     <div className="mt-10 w-full mx-auto p-2 bg-[#035a33]">
