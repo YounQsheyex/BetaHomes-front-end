@@ -1,8 +1,19 @@
 import React from "react";
 import AuthBg from "./layout/AuthBg";
 import google from "../assets/google.png";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../utils/formValidator";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
   return (
     <div className="w-full flex justify-center items-center gap-10 mx-auto  lg:m-20">
       <div className="w-full lg:w-[482px] p-2 ">
@@ -14,7 +25,7 @@ const SignIn = () => {
             Lets get started by filling out the information below
           </p>
         </div>
-        <form className="mt-5">
+        <form onSubmit={handleSubmit()} className="mt-5">
           <div className="block my-3">
             <label
               htmlFor="email"
@@ -28,7 +39,13 @@ const SignIn = () => {
               id="email"
               placeholder="Enter your Email"
               className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
+              {...register("email")}
             />
+            {errors.email && (
+              <p className="text-[#EC5E5E] font-[Outfit] font-[400] text-[14px] mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
           <div className="block my-3">
             <label
@@ -42,7 +59,13 @@ const SignIn = () => {
               id="password"
               placeholder="Enter your Email"
               className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
+              {...register("password")}
             />
+            {errors.password && (
+              <p className="text-[#EC5E5E] font-[Outfit] font-[400] text-[14px] mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center justify-between my-3">
@@ -75,10 +98,12 @@ const SignIn = () => {
             <p>Continue with Google</p>
           </button>
         </form>
-        <p className="mt-10 font-[500] font-[Outfit] text-[18px] text-[#716f6f] text-center">
-          New User?
-          <span className="text-[#39dd70]">Sign up</span>
-        </p>
+        <Link to={"/sign-up"}>
+          <p className="mt-10 font-[500] font-[Outfit] text-[18px] text-[#716f6f] text-center">
+            New User?
+            <span className="text-[#39dd70]">Sign up</span>
+          </p>
+        </Link>
       </div>
       <AuthBg />
     </div>
