@@ -41,21 +41,31 @@ const NavLoggedin = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box bg-[#dddddd] z-1 w-[320px] h-[400px] p-2 shadow-sm rounded-lg "
+            className="dropdown-content menu rounded-box bg-[#3d9970] z-1 w-[320px] h-[400px] p-2 shadow-sm rounded-lg "
           >
             <li>
               <div className="w-full h-[50px] mt-5 mx-auto flex flex-col justify-center-safe text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
-                <a href="">Home</a>
-                <a href="">Properties</a>
-                <a href="">About Us</a>
-                <a href="">Blog</a>
-                <a href="">Contact Us</a>
+                <a href="" className="mt-2">
+                  Home
+                </a>
+                <a href="" className="my-2">
+                  Properties
+                </a>
+                <a href="" className="my-2">
+                  About Us
+                </a>
+                <a href="" className="my-2">
+                  Blog
+                </a>
+                <a href="" className="my-2">
+                  Contact Us
+                </a>
               </div>
             </li>
             <li>
-              <div className="mt-50 w-[314px] items-center justify-between ">
-                <button className="w-[120px] h-[61px] rounded-[8px] border-[2px] border-[#f5f5f5] p-[10px] text-[20px] text-[#f5f5f5] font-[400] font-[regular] font-[Exo 2] text-center cursor-pointer hover:bg-[#3d9970] hover:opacity-60">
-                  Sign Up
+              <div className="mt-50 w-[314px] items-center justify-center">
+                <button className="w-[120px] h-[61px] rounded-[8px] border-[2px] border-[#f5f5f5] p-[10px] text-[20px] text-[#f5f5f5] font-[400] font-[regular] font-[Exo 2] text-center cursor-pointer hover:bg-[#3d9970] hover:opacity-60 my-3">
+                  Log-out
                 </button>
                 {/* <button className="w-[120px] h-[61px] rounded-[8px] bg-[#3d9970] p-[10px] text-[20px] text-[#f5f5f5] font-[500] font-[medium] font-[Exo 2] text-center cursor-pointer  hover:opacity-60">
                   Login
