@@ -18,6 +18,13 @@ const Register = () => {
     <div className="w-full flex justify-center items-center gap-10 mx-auto  lg:m-20">
       <div className="w-full lg:w-[482px] p-2 ">
         <div className="w-full lg:w-[455px]">
+          <Link to={"/"}>
+            <div className="rounded-full bg-[#4ba586] w-[47px] h-[47px] flex justify-center items-center  text-center">
+              <h1 className="text-[24px] text-[#fefeff] font-[700] font-[Poppins]">
+                BH
+              </h1>
+            </div>
+          </Link>
           <h1 className="font-[Outfit] font-[600] text-[28px] text-[#181a20] ] text-center lg:text-start">
             Join our community of home seekers and explore the possibilities
             that await.
