@@ -45,19 +45,24 @@ const SignIn = () => {
             />
           </div>
 
-          <div className="flex items-center gap-4 my-3">
-            <input
-              type="checkbox"
-              name=""
-              id="terms"
-              className="bg-[#0fbb6d]"
-            />
-            <label
-              htmlFor="terms"
-              className="font-[500] font-[Outfit] text-[16px] text-[#181A20D1]"
-            >
-              Remeber me
-            </label>
+          <div className="flex items-center justify-between my-3">
+            <div className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                name=""
+                id="terms"
+                className="bg-[#0fbb6d]"
+              />
+              <label
+                htmlFor="terms"
+                className="font-[400] font-[Outfit] text-[16px] text-[#181A20D1]"
+              >
+                Remeber me
+              </label>
+            </div>
+            <p className="font-[400] font-[Outfit] text-[16px] text-[#EC5E5E]">
+              Forgot Password ?
+            </p>
           </div>
           <button className="w-full h-[65px] bg-[#3d9970] rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#ffffff] my-3 cursor-pointer">
             Sign In
