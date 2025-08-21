@@ -1,6 +1,19 @@
 import React from "react";
+import { useState } from "react";
 
 const BrosweProperty = () => {
+  const [rooms, setRooms] = useState(0);
+
+  const increase = () => {
+    setRooms(rooms + 1);
+  };
+
+  const decrease = () => {
+    if (rooms > 0) {
+      setRooms(rooms - 1);
+    }
+  };
+
   return (
     <div className="w-full lg:max-w-[1024px] lg:h-[404px] mx-auto p-2">
       <div className="w-full lg:w-[988px] h-[217px] mx-auto flex flex-col justify-between  items-center">
@@ -39,13 +52,25 @@ const BrosweProperty = () => {
               BEDROOM
             </label>
             <div className="flex items-center gap-2 justify-between">
-              <button className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center">
+              <p
+                onClick={decrease}
+                className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center cursor-pointer"
+              >
                 -
-              </button>
-              <input type="text" className="w-[15px] outline-none" />
-              <button className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center">
+              </p>
+              <input
+                value={rooms}
+                readOnly
+                placeholder="0"
+                type="text"
+                className="w-[15px] outline-none placeholder:text-[#787878]"
+              />
+              <p
+                onClick={increase}
+                className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center cursor-pointer"
+              >
                 +
-              </button>
+              </p>
             </div>
           </div>
           <div className="my-3 lg:my-0 w-[230px] h-full bg-[#3d9970] rounded-lg lg:rounded-none lg:rounded-tr-[10px] lg:rounded-br-[10px]">

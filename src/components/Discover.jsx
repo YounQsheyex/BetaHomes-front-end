@@ -2,8 +2,30 @@ import React from "react";
 import { discover } from "../../utils/data.js";
 import nairaw from "../assets/nairaw.png";
 import whiteloc from "../assets/whiteloc.png";
+import { useState } from "react";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Discover = () => {
+  // const [currentImage, setCurrentImage] = useState(0);
+  // const imagePershow = 3;
+  // const totalImage = discover.length;
+
+  // const currentI = discover.slice(currentImage, currentImage + imagePershow);
+
+  // // Handlers
+  // const goNext = () => {
+  //   if (currentImage + imagePershow < totalImage) {
+  //     setCurrentImage(currentImage + imagePershow);
+  //   }
+  // };
+
+  // const goPrev = () => {
+  //   if (currentImage - imagePershow >= 0) {
+  //     setCurrentImage(currentImage - imagePershow);
+  //   }
+  // };
+
   return (
     <div className="mt-10 w-full lg:max-w-[1024px] mx-auto p-2">
       <div>
@@ -11,17 +33,20 @@ const Discover = () => {
           Discover Our Popular Properties
         </h1>
       </div>
-      <div className="mt-10 w-full lg:w-[1020px] lg:h-[412px] flex flex-col gap-3 items-center lg:flex-row lg:justify-between">
+      <div className="mt-10 w-full lg:w-[1020px] lg:h-[412px] flex  gap-3 items-center lg:flex-row lg:justify-between overflow-y-auto scroll-smooth">
+        {/* <button onClick={goPrev}>
+          <FaArrowLeftLong />
+        </button> */}
         {discover.map((d, index) => {
           return (
             <div
               key={index}
-              className="w-[290px] h-full rounded-[7px] relative"
+              className="w-[85%] sm:w-[45%] lg:w-[23%] flex-shrink-0 h-full rounded-[7px] relative"
             >
               <img
                 src={d.image}
                 alt="img"
-                className="w-[290px] h-full rounded-[7px] object-cover"
+                className="w-full lg:w-[290px] h-full rounded-[7px] object-cover"
               />
               <div className="w-full absolute bottom-0 left-0 px-4 backdrop-blur-[2px] bg-[#4A4A4C33] rounded-b-[7px]">
                 <div>
@@ -56,6 +81,10 @@ const Discover = () => {
             </div>
           );
         })}
+
+        {/* <button onClick={goNext}>
+          <FaArrowRightLong />
+        </button> */}
       </div>
     </div>
   );
