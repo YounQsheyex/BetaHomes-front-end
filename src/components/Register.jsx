@@ -16,7 +16,7 @@ const Register = () => {
   });
   return (
     <div className="w-full lg:max-w-[1240px] mx-auto flex justify-center items-center gap-10 lg:mt-5">
-      <div className="w-full lg:max-w-[482px] p-2 ">
+      <div className="w-full lg:max-w-[482px] p-7 ">
         <div className="w-full lg:w-[455px]">
           <Link to={"/"}>
             <div className="rounded-full bg-[#4ba586] w-[47px] mx-auto h-[47px] flex justify-center items-center  text-center">
@@ -33,7 +33,7 @@ const Register = () => {
             Lets get started by filling out the information below
           </p>
         </div>
-        <form onSubmit={handleSubmit()} className="mt-5 p-5">
+        <form onSubmit={handleSubmit()} className="mt-5 ">
           <div className="flex items-center justify-between gap-2 mb-3">
             <div className="w-full lg:w-[218px] h-[81px]">
               <label

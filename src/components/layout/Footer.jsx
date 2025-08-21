@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <div className="mt-10 w-full mx-auto p-2 bg-[#035a33]">
       <div className="w-full lg:max-w-[1024px] mx-auto p-2 mt-25">
-        <div className="lg:grid lg:grid-cols-12">
-          <div className="col-span-6">
-            <div className="w-[216px] h-[47px] flex items-center justify-between lg:gap-2">
+        <div className="lg:grid lg:grid-cols-12 text-center lg:text-start">
+          <div className="col-span-6 flex flex-col items-center lg:items-start lg:mb-0  mb-3">
+            <div className="w-[216px] h-[47px] flex items-center  gap-2">
               <div className="rounded-full bg-[#4ba586] w-[47px] h-[47px] flex justify-center items-center  text-center">
                 <h1 className="text-[24px] text-[#fefeff] font-[700] font-[Poppins]">
                   BH
