@@ -1,6 +1,7 @@
 import React from "react";
 import { GrMenu } from "react-icons/gr";
 import { Link } from "react-router-dom";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 const NavLoggedin = () => {
   return (
@@ -18,22 +19,39 @@ const NavLoggedin = () => {
             </h1>
           </div>
         </div>
-        <div className="hidden lg:w-[495px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
+        <div className="hidden lg:w-[620px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
           <Link to={"/home"}>Home</Link>
           <a href="">Properties</a>
           <a href="">About Us</a>
           <a href="">Blog</a>
           <a href="">Contact Us</a>
         </div>
-        <div className="hidden lg:w-[314px] lg:flex lg:items-center  lg:gap-3 ">
+        <div className="hidden lg:w-[350px] lg:flex lg:items-center justify-between  lg:gap-0 ">
           <div className="avatar avatar-online">
-            <div className="w-20 rounded-full">
+            <div className="w-12 rounded-full">
               <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
             </div>
           </div>
-          <button className="w-[120px] h-[61px] rounded-[8px] bg-[#3d9970] p-[10px] text-[20px] text-[#f5f5f5] font-[500] font-[medium] font-[Exo 2] text-center cursor-pointer  hover:opacity-60">
-            Login
-          </button>
+          <div>
+            <p className="font-[400] font-[Poppins] text-[14px] text-[#ffffff]">
+              Oluwaseyi Lawrence
+            </p>
+          </div>
+        </div>
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="cursor-pointer">
+            <div className="w-10 ">
+              <MdOutlineKeyboardArrowDown size={40} color="#ffffff" />
+            </div>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-[#ffffff] rounded-box z-1 mt-3 w-40 p-2 shadow"
+          >
+            <li>
+              <a>Logout</a>
+            </li>
+          </ul>
         </div>
         <div className="dropdown dropdown-end lg:hidden">
           <div tabIndex={0} role="button" className="m-1">
@@ -41,7 +59,7 @@ const NavLoggedin = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box bg-[#3d9970] z-1 w-[320px] h-[400px] p-2 shadow-sm rounded-lg "
+            className="dropdown-content menu rounded-box bg-[#3d9970] z-1 w-[300px] h-[300px] p-2 shadow-sm rounded-lg "
           >
             <li>
               <div className="w-full h-[50px] mt-5 mx-auto flex flex-col justify-center-safe text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
@@ -60,16 +78,6 @@ const NavLoggedin = () => {
                 <a href="" className="my-2">
                   Contact Us
                 </a>
-              </div>
-            </li>
-            <li>
-              <div className="mt-50 w-[314px] items-center justify-center">
-                <button className="w-[120px] h-[61px] rounded-[8px] border-[2px] border-[#f5f5f5] p-[10px] text-[20px] text-[#f5f5f5] font-[400] font-[regular] font-[Exo 2] text-center cursor-pointer hover:bg-[#3d9970] hover:opacity-60 my-3">
-                  Log-out
-                </button>
-                {/* <button className="w-[120px] h-[61px] rounded-[8px] bg-[#3d9970] p-[10px] text-[20px] text-[#f5f5f5] font-[500] font-[medium] font-[Exo 2] text-center cursor-pointer  hover:opacity-60">
-                  Login
-                </button> */}
               </div>
             </li>
           </ul>

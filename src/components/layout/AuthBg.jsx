@@ -3,7 +3,7 @@ import authbg from "../../assets/authbg.png";
 
 const AuthBg = () => {
   return (
-    <div className="hidden lg:block lg:w-[779px] h-[900px] lg:rounded-[12px] lg:relative">
+    <div className="hidden lg:block lg:max-w-[779px] h-[900px] lg:rounded-[12px] lg:relative">
       <img
         src={authbg}
         alt="bg"

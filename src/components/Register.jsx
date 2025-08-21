@@ -15,11 +15,11 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
   });
   return (
-    <div className="w-full flex justify-center items-center gap-10 mx-auto  lg:m-20">
-      <div className="w-full lg:w-[482px] p-2 ">
+    <div className="w-full lg:max-w-[1240px] mx-auto flex justify-center items-center gap-10 lg:mt-5">
+      <div className="w-full lg:max-w-[482px] p-2 ">
         <div className="w-full lg:w-[455px]">
           <Link to={"/"}>
-            <div className="rounded-full bg-[#4ba586] w-[47px] h-[47px] flex justify-center items-center  text-center">
+            <div className="rounded-full bg-[#4ba586] w-[47px] mx-auto h-[47px] flex justify-center items-center  text-center">
               <h1 className="text-[24px] text-[#fefeff] font-[700] font-[Poppins]">
                 BH
               </h1>
@@ -33,9 +33,9 @@ const Register = () => {
             Lets get started by filling out the information below
           </p>
         </div>
-        <form onSubmit={handleSubmit()} className="mt-10">
-          <div className="flex items-center justify-between gap-2">
-            <div className="w-full lg:w-[218px] h-[81px] mb-3">
+        <form onSubmit={handleSubmit()} className="mt-5 p-5">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <div className="w-full lg:w-[218px] h-[81px]">
               <label
                 htmlFor="firstName"
                 className="font-[500] font-[Outfit] text-[16px] text-[#181A20D1]"
@@ -50,7 +50,7 @@ const Register = () => {
                 {...register("fullName")}
               />
               {errors.fullName && (
-                <p className="text-[#EC5E5E] font-[Outfit] font-[400] text-[14px] mt-1">
+                <p className="text-[#EC5E5E] font-[Outfit] font-[400] text-[14px] mb-1">
                   {errors.fullName.message}
                 </p>
               )}
@@ -159,21 +159,21 @@ const Register = () => {
               <span className="text-[#3d9970]"> Privacy Policies</span>
             </label>
           </div>
-          <button className="w-full h-[65px] bg-[#3d9970] rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#ffffff] my-3 cursor-pointer">
+          <button className="w-full h-[65px] bg-[#3d9970] rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#ffffff]  cursor-pointer">
             Sign Up
           </button>
-          <div className="my-2">
-            <p>or</p>
-          </div>
-          <button className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929] my-3 cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center">
-            <img src={google} alt="google" />
-            <p>Continue with Google</p>
-          </button>
         </form>
+        <div className="">
+          <p>or</p>
+        </div>
+        <button className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929]  cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center">
+          <img src={google} alt="google" />
+          <p>Continue with Google</p>
+        </button>
         <Link to={"/sign-in"}>
-          <p className="mt-10 font-[500] font-[Outfit] text-[18px] text-[#716f6f] text-center">
+          <p className="mt-3 font-[500] font-[Outfit] text-[18px] text-[#716f6f] text-center">
             Already have an account?
-            <span className="text-[#39dd70]">Sign In</span>
+            <span className="text-[#39dd70]"> Sign In</span>
           </p>
         </Link>
       </div>

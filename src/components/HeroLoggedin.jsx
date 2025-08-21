@@ -4,7 +4,7 @@ import BrosweProperty from "./BrosweProperty";
 
 const HeroLoggedin = () => {
   return (
-    <div className="hero w-full lg:h-[680px] h-auto bg-[#666666]">
+    <div className="hero w-sm md:w-full lg:h-[680px] h-auto bg-[#666666]">
       <NavLoggedin />
       <BrosweProperty />
     </div>
