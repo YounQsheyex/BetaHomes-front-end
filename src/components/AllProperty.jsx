@@ -115,7 +115,7 @@ const AllProperty = () => {
                       {property.price}
                     </p>
                   </div>
-                  <div className="w-[130px] flex gap-6 items-center">
+                  <div className="w-[130px] flex gap-6 items-center mt-4 md:mt-0">
                     <img src={arrow} alt="arrow" />
                     <img src={share} alt="share" />
                     <img src={love} alt="love" />
