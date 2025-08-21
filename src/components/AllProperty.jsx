@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { properties } from "../../utils/data.js";
 import bath from "../assets/bath.png";
 import bed from "../assets/bed.png";
@@ -11,8 +12,17 @@ import love from "../assets/love.png";
 import arrow from "../assets/arrow.png";
 import share from "../assets/share.png";
 import filter from "../assets/filter.png";
+import Pagination from "./Pagination.jsx";
 
 const AllProperty = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+
+  // calculate what to show
+  const totalItems=properties.length
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = properties.slice(indexOfFirstItem, indexOfLastItem);
   return (
     <div className="w-full lg:max-w-[1240px] mx-auto p-2">
       <div className="my-10 w-full flex flex-col lg:flex-row items-center justify-between">
@@ -22,7 +32,9 @@ const AllProperty = () => {
             <p>More Filter</p>
           </div>
           <div>
-            <p>Showing 1-10 of 15 results</p>
+            <p>
+              Showing {currentItems.length} of {totalItems} results
+            </p>
           </div>
         </div>
         <div className="flex gap-1.5">
@@ -31,7 +43,7 @@ const AllProperty = () => {
         </div>
       </div>
       <div className="md:mx-auto flex items-center md:justify-center lg:justify-between flex-wrap">
-        {properties.map((property, index) => {
+        {currentItems.map((property, index) => {
           return (
             <div key={index} className="w-full md:w-[395px] p-[10px] my-5">
               <div className="relative">
@@ -114,33 +126,13 @@ const AllProperty = () => {
           );
         })}
       </div>
-      <div className="join flex justify-center mt-5">
-        <input
-          className="join-item btn btn-square"
-          type="radio"
-          name="options"
-          aria-label="1"
-          checked="checked"
-        />
-        <input
-          className="join-item btn btn-square"
-          type="radio"
-          name="options"
-          aria-label="2"
-        />
-        <input
-          className="join-item btn btn-square"
-          type="radio"
-          name="options"
-          aria-label="3"
-        />
-        <input
-          className="join-item btn btn-square"
-          type="radio"
-          name="options"
-          aria-label="4"
-        />
-      </div>
+      {/* Pagination */}
+      <Pagination
+        totalItems={properties.length}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };
