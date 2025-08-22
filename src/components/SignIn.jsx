@@ -12,6 +12,7 @@ import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import liner from "../assets/liner.png";
 import linel from "../assets/linel.png";
+import { PiWarningCircle } from "react-icons/pi";
 
 const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,6 +42,7 @@ const SignIn = () => {
     } catch (error) {
       console.log(error);
       toast.error("Login Failed");
+      setErrorMsg(error?.response?.data.message || "Login Failed");
     } finally {
       setIsSubmitting(false);
     }
@@ -130,6 +132,12 @@ const SignIn = () => {
             {isSubmitting ? <ClipLoader color="#ffffff" /> : "Sign In"}
           </button>
         </form>
+        {errorMsg && (
+          <div className="w-full my-5 justify-center rounded-xl py-2  px-4 bg-[#FF37370D] border border-[#ff3737] text-[#ff3737] flex items-center gap-3">
+            <PiWarningCircle size={22} />
+            <p>{errorMsg}</p>
+          </div>
+        )}
         <div className="flex justify-between items-center my-3 ">
           <img src={linel} alt="" />
           <p>or</p>

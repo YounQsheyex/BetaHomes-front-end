@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 import liner from "../assets/liner.png";
 import linel from "../assets/linel.png";
+import { PiWarningCircle } from "react-icons/pi";
 
 const Register = () => {
   const {
@@ -77,9 +78,9 @@ const Register = () => {
                 className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
                 {...register("firstName")}
               />
-              {errors.fullName && (
+              {errors.firstName && (
                 <p className="text-[#EC5E5E] font-[Outfit] font-[400] text-[14px] mb-1">
-                  {errors.fullName.message}
+                  {errors.firstName.message}
                 </p>
               )}
             </div>
@@ -191,6 +192,12 @@ const Register = () => {
             {isSubmitting ? <ClipLoader color="#ffffff" /> : "Sign up"}
           </button>
         </form>
+        {errorMsg && (
+          <div className="w-full my-5 justify-center rounded-xl py-2  px-4 bg-[#FF37370D] border border-[#ff3737] text-[#ff3737] flex items-center gap-3">
+            <PiWarningCircle size={22} />
+            <p>{errorMsg}</p>
+          </div>
+        )}
         <div className="flex justify-between items-center my-3 ">
           <img src={linel} alt="" />
           <p>or</p>
