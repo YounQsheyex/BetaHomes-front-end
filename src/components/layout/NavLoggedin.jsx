@@ -41,14 +41,14 @@ const NavLoggedin = () => {
             Contact Us
           </a>
         </div>
-        <div className="hidden lg:w-[350px] lg:flex lg:items-center justify-between  lg:gap-0 ">
+        <div className="hidden lg:w-[350px] lg:flex lg:items-center justify-between  lg:gap-5 ">
           <div className="avatar avatar-online">
             <div className="w-12 rounded-full">
               <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
             </div>
           </div>
           <div>
-            <p className="font-[400] font-[Poppins] text-[14px] text-[#ffffff]">
+            <p className="font-[300] font-[Poppins] text-center text-[15px] text-[#ffffff]">
               {user.firstName}  {user.lastName}
             </p>
           </div>
