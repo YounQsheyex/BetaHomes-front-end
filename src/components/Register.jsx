@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
+import liner from "../assets/liner.png";
+import linel from "../assets/linel.png";
 
 const Register = () => {
   const {
@@ -189,8 +191,10 @@ const Register = () => {
             {isSubmitting ? <ClipLoader color="#ffffff" /> : "Sign up"}
           </button>
         </form>
-        <div className="">
+        <div className="flex justify-between items-center my-3 ">
+          <img src={linel} alt="" />
           <p>or</p>
+          <img src={liner} alt="" />
         </div>
         <button className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929]  cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center">
           <img src={google} alt="google" />
