@@ -49,7 +49,7 @@ const NavLoggedin = () => {
           </div>
           <div>
             <p className="font-[400] font-[Poppins] text-[14px] text-[#ffffff]">
-              Oluwaseyi Lawrence
+              {user.firstName}  {user.lastName}
             </p>
           </div>
         </div>
