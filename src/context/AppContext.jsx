@@ -3,26 +3,38 @@ import { createContext, useState, useEffect } from "react";
 export const appContext = createContext();
 
 const Approvider = ({ children }) => {
-  const [user, setUser] = useState("");
-  const [token, setToken] = useState("");
-  const [loading, setIsloading] = useState("");
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Get from localStorage
     const storedToken = localStorage.getItem("accessToken");
     const storedUser = localStorage.getItem("user");
-    if (storedToken && storedUser) {
+
+    if (storedToken) {
       setToken(storedToken);
-      setUser(JSON.parse(storedUser));
     }
-    setIsloading(false);
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (err) {
+        console.error("Error parsing user:", err);
+        localStorage.removeItem("user");
+      }
+    }
+
+    setLoading(false);
   }, []);
 
-  const login = (accessToken, user) => {
+  const login = (accessToken, userData) => {
     setToken(accessToken);
-    setUser(user);
+    setUser(userData);
+
     localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(userData));
   };
+
   const logout = () => {
     setToken(null);
     setUser(null);
