@@ -46,7 +46,7 @@ const Discover = () => {
               <img
                 src={d.image}
                 alt="img"
-                className="w-full lg:w-[290px] h-full rounded-[7px] object-cover"
+                className="w-full lg:w-[290px] h-[412px] rounded-[7px] object-cover"
               />
               <div className="w-full absolute bottom-0 left-0 px-4 backdrop-blur-[2px] bg-[#4A4A4C33] rounded-b-[7px]">
                 <div>
