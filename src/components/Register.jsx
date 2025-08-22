@@ -203,7 +203,10 @@ const Register = () => {
           <p>or</p>
           <img src={liner} alt="" />
         </div>
-        <button className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929]  cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center">
+        <button
+          onClick={(e) => e.preventDefault()}
+          className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929]  cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center"
+        >
           <img src={google} alt="google" />
           <p>Continue with Google</p>
         </button>

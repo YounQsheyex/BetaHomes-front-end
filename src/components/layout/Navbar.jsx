@@ -18,7 +18,10 @@ const Navbar = () => {
             </h1>
           </div>
         </div>
-        <div className="hidden lg:w-[495px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
+        <div
+          onClick={(e) => e.preventDefault()}
+          className="hidden lg:w-[495px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]"
+        >
           <a href="">Home</a>
           <a href="">Properties</a>
           <a href="">About Us</a>
@@ -46,7 +49,10 @@ const Navbar = () => {
             className="dropdown-content menu rounded-box bg-[#3d9970] z-1 w-[320px] h-[400px] p-2 shadow-sm rounded-lg "
           >
             <li>
-              <div className="w-full h-[50px] mt-5 mx-auto flex flex-col justify-center-safe text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
+              <div
+                onClick={(e) => e.preventDefault()}
+                className="w-full h-[50px] mt-5 mx-auto flex flex-col justify-center-safe text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]"
+              >
                 <a href="" className="mt-2">
                   Home
                 </a>

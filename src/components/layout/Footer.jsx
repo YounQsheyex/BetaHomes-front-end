@@ -4,7 +4,10 @@ import email from "../../assets/email.png";
 import whiteloc from "../../assets/whiteloc.png";
 const Footer = () => {
   return (
-    <div className="mt-10 w-full mx-auto p-2 bg-[#035a33]">
+    <div
+      onClick={(e) => e.preventDefault()}
+      className="mt-10 w-full mx-auto p-2 bg-[#035a33]"
+    >
       <div className="w-full lg:max-w-[1024px] mx-auto p-2 mt-25">
         <div className="lg:grid lg:grid-cols-12 text-center lg:text-start">
           <div className="col-span-6 flex flex-col items-center lg:items-start lg:mb-0  mb-3">
@@ -45,7 +48,10 @@ const Footer = () => {
             <h1 className="font-[600] font-[Outfit] text-[23px] text-[#ffffff]">
               Quick Links
             </h1>
-            <div className="flex flex-col my-5 font-[400] font-[Outfit] text-[18px] text-[#FFFFFFE5]">
+            <div
+              onClick={(e) => e.preventDefault()}
+              className="flex flex-col my-5 font-[400] font-[Outfit] text-[18px] text-[#FFFFFFE5]"
+            >
               <a href="#">Home</a>
               <a href="#" className="my-3">
                 Properties
@@ -77,7 +83,10 @@ const Footer = () => {
             <h1 className="font-[600] font-[Outfit] text-[23px] text-[#ffffff]">
               Popular Search
             </h1>
-            <div className="flex flex-col my-5 font-[400] font-[Outfit] text-[18px] text-[#FFFFFFE5]">
+            <div
+              onClick={(e) => e.preventDefault()}
+              className="flex flex-col my-5 font-[400] font-[Outfit] text-[18px] text-[#FFFFFFE5]"
+            >
               <a href="#">Apartment for sale</a>
               <a href="#" className="my-3">
                 Apartment for rent
@@ -91,7 +100,10 @@ const Footer = () => {
         </div>
       </div>
       <hr className="w-full border-[1px] border-[#6f6f6f] my-20 " />
-      <div className="w-full mx-auto lg:max-w-[1010px] flex flex-col lg:flex-row items-center justify-between font-[400] font-[Outfit] text-[14px] text-[#ffffff] mb-15">
+      <div
+        onClick={(e) => e.preventDefault()}
+        className="w-full mx-auto lg:max-w-[1010px] flex flex-col lg:flex-row items-center justify-between font-[400] font-[Outfit] text-[14px] text-[#ffffff]  mb-15"
+      >
         <p>Copyright 2025 Betahouse | Designed by YounQsheyex</p>
         <p>Privacy Policy</p>
       </div>

@@ -26,7 +26,10 @@ const BrosweProperty = () => {
         </p>
       </div>
       <div className="w-full bg-[#ffffff33] lg:h-[140px] lg:py-7 px-5 mt-15 lg:mt-4 lg:my-5">
-        <form className="mb-5 lg:mb-0 w-full lg:h-[88px] rounded-[10px] bg-[#ffffff] flex flex-col lg:flex-row items-center justify-center lg:justify-between shadow-lg ">
+        <form
+          onClick={(e) => e.preventDefault()}
+          className="mb-5 lg:mb-0 w-full lg:h-[88px] rounded-[10px] bg-[#ffffff] flex flex-col lg:flex-row items-center justify-center lg:justify-between shadow-lg "
+        >
           <div className="mt-5 lg:mt-0 flex flex-col items-center  border-b lg:border-b-0 lg:border-r">
             <label className="font-[600] font-[outfit] text-[14px] text-[#30343b]">
               LOCATION

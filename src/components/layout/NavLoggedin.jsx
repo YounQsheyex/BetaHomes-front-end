@@ -28,10 +28,18 @@ const NavLoggedin = () => {
         </div>
         <div className="hidden lg:w-[620px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
           <Link to={"/home"}>Home</Link>
-          <a href="">Properties</a>
-          <a href="">About Us</a>
-          <a href="">Blog</a>
-          <a href="">Contact Us</a>
+          <a href="" onClick={(e) => e.preventDefault()}>
+            Properties
+          </a>
+          <a href="" onClick={(e) => e.preventDefault()}>
+            About Us
+          </a>
+          <a href="" onClick={(e) => e.preventDefault()}>
+            Blog
+          </a>
+          <a href="" onClick={(e) => e.preventDefault()}>
+            Contact Us
+          </a>
         </div>
         <div className="hidden lg:w-[350px] lg:flex lg:items-center justify-between  lg:gap-0 ">
           <div className="avatar avatar-online">
@@ -71,7 +79,10 @@ const NavLoggedin = () => {
             className="dropdown-content menu rounded-box bg-[#3d9970] z-1 w-[300px] h-[300px] p-2 shadow-sm rounded-lg "
           >
             <li>
-              <div className="w-full h-[50px] mt-5 mx-auto flex flex-col justify-center-safe text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
+              <div
+                onClick={(e) => e.preventDefault()}
+                className="w-full h-[50px] mt-5 mx-auto flex flex-col justify-center-safe text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium] "
+              >
                 <a href="" className="mt-2">
                   Home
                 </a>
