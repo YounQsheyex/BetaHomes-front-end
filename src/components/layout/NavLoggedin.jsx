@@ -1,9 +1,16 @@
 import React from "react";
 import { GrMenu } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const NavLoggedin = () => {
+  const redirect = useNavigate();
+  const { logout, user } = useAppContext();
+  const handleLogout = () => {
+    logout();
+    redirect("/");
+  };
   return (
     <div className="-mt-135 lg:-mt-140 w-full mx-auto bg-[#1d293f1f] lg:h-[121px] p-[2px] lg:shadow-lg">
       <nav className="w-full lg:max-w-[1024px] h-[61px] mx-auto  lg:pt-10 flex justify-between lg:flex lg:justify-between lg:items-center lg:gap-16">
@@ -49,7 +56,9 @@ const NavLoggedin = () => {
             className="menu menu-sm dropdown-content bg-[#ffffff] rounded-box z-1 mt-3 w-40 p-2 shadow"
           >
             <li>
-              <a>Logout</a>
+              <button onClick={handleLogout}>
+                <a>Logout</a>
+              </button>
             </li>
           </ul>
         </div>

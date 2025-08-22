@@ -1,6 +1,6 @@
-import { createxContex, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
-export const appContext = createxContex();
+export const appContext = createContext();
 
 const Approvider = ({ children }) => {
   const [user, setUser] = useState("");
@@ -29,12 +29,12 @@ const Approvider = ({ children }) => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
   };
-};
 
-return (
-  <appContext.Provider value={{ login, logout, user, token, loading }}>
-    {children}
-  </appContext.Provider>
-);
+  return (
+    <appContext.Provider value={{ login, logout, user, token, loading }}>
+      {children}
+    </appContext.Provider>
+  );
+};
 
 export default Approvider;

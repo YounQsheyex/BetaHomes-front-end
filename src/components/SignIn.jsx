@@ -4,9 +4,19 @@ import google from "../assets/google.png";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/formValidator";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppContext } from "../hooks/useAppContext";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { useState } from "react";
+import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const redirect = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
+  const { login, user } = useAppContext();
+
   const {
     register,
     handleSubmit,
@@ -14,6 +24,26 @@ const SignIn = () => {
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
+
+  const handleLogin = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const { data: mydata } = await axiosInstance.post("/auth/sign-in", {
+        ...data,
+      });
+      login(mydata.token, mydata.user);
+
+      console.log(mydata);
+      toast.success("Welcome");
+      redirect("/home");
+    } catch (error) {
+      console.log(error);
+      toast.error("Login Failed");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="w-full lg:max-w-[1240px] flex justify-center items-center gap-10 mx-auto  lg:mt-5">
       <div className="w-full lg:w-[482px] p-7 m-3">
@@ -32,7 +62,7 @@ const SignIn = () => {
             Lets get started by filling out the information below
           </p>
         </div>
-        <form onSubmit={handleSubmit()} className="mt-5">
+        <form onSubmit={handleSubmit(handleLogin)} className="mt-5">
           <div className="block my-3">
             <label
               htmlFor="email"
@@ -62,7 +92,7 @@ const SignIn = () => {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               id="password"
               placeholder="Enter your Email"
               className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
@@ -95,7 +125,7 @@ const SignIn = () => {
             </p>
           </div>
           <button className="w-full h-[65px] bg-[#3d9970] rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#ffffff]  cursor-pointer">
-            Sign In
+            {isSubmitting ? <ClipLoader color="#ffffff" /> : "Sign In"}
           </button>
         </form>
         <div className="">

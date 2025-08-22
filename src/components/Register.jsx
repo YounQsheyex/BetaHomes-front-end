@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import google from "../assets/google.png";
 import AuthBg from "./layout/AuthBg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../utils/formValidator";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 const Register = () => {
   const {
@@ -14,6 +17,29 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const redirect = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleRegister = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const response = await axiosInstance.post("/auth/sign-up", { ...data });
+      if (response.status === 201) {
+        console.log(response.data);
+        toast.success("Registration Successful");
+        redirect("/sign-in");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Error Occured Please Try Again");
+      setErrorMsg(error?.response?.data.message || "Registration Unsuccesfull");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="w-full lg:max-w-[1240px] mx-auto flex justify-center items-center gap-10 lg:mt-5">
       <div className="w-full lg:max-w-[482px] p-7 ">
@@ -33,7 +59,7 @@ const Register = () => {
             Lets get started by filling out the information below
           </p>
         </div>
-        <form onSubmit={handleSubmit()} className="mt-5 ">
+        <form onSubmit={handleSubmit(handleRegister)} className="mt-5 ">
           <div className="flex items-center justify-between gap-2 mb-3">
             <div className="w-full lg:w-[218px] h-[81px]">
               <label
@@ -47,7 +73,7 @@ const Register = () => {
                 type="text"
                 placeholder="Enter Name"
                 className="w-full placeholder:text-[#2632388F] placeholder:font-[Outfit] placeholder:font-[400] placeholder:text-[16px] p-1.5 border-[2.5px] border-[#dedfe0] rounded-[5px] my-2"
-                {...register("fullName")}
+                {...register("firstName")}
               />
               {errors.fullName && (
                 <p className="text-[#EC5E5E] font-[Outfit] font-[400] text-[14px] mb-1">
@@ -160,7 +186,7 @@ const Register = () => {
             </label>
           </div>
           <button className="w-full h-[65px] bg-[#3d9970] rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#ffffff]  cursor-pointer">
-            Sign Up
+            {isSubmitting ? <ClipLoader color="#ffffff" /> : "Sign up"}
           </button>
         </form>
         <div className="">
