@@ -26,7 +26,7 @@ const NavLoggedin = () => {
             </h1>
           </div>
         </div>
-        <div className="hidden lg:w-[620px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
+        <div className="hidden lg:w-[750px] h-[50px] lg:flex lg:items-center lg:justify-between text-[#f5f5f5f5] font-[Exo 2] font-[500] text-[20px] font-[medium]">
           <Link to={"/home"}>Home</Link>
           <a href="" onClick={(e) => e.preventDefault()}>
             Properties
