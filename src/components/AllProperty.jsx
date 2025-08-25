@@ -43,9 +43,12 @@ const AllProperty = () => {
   }, []);
 
   // calculate what to show
+  
   const totalItems = properties.length;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const lastItem = Math.min(indexOfLastItem, totalItems);
+  const firstItem = totalItems === 0 ? 0 : indexOfFirstItem + 1;
   const currentItems = properties.slice(indexOfFirstItem, indexOfLastItem);
   return (
     <div className="w-full lg:max-w-[1240px] mx-auto p-2">
@@ -57,7 +60,7 @@ const AllProperty = () => {
           </div>
           <div>
             <p>
-              Showing {currentItems.length} of {totalItems} results
+              Showing {firstItem}–{lastItem} of {totalItems} results
             </p>
           </div>
         </div>
