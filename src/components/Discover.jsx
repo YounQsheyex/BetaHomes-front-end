@@ -26,6 +26,8 @@ const Discover = () => {
   //   }
   // };
 
+  
+
   return (
     <div className="mt-10 w-full lg:max-w-[1024px] mx-auto p-2">
       <div>

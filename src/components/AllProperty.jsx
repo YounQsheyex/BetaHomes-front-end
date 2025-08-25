@@ -15,41 +15,47 @@ import filter from "../assets/filter.png";
 import Pagination from "./Pagination.jsx";
 import { axiosInstance } from "../../utils/axiosInstance.js";
 import Loader from "./Loader.jsx";
+import { usePropertyContext } from "../hooks/usePropertyContext.jsx";
 
 const AllProperty = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setIsloading] = useState(false);
-  const [properties, setProperties] = useState([]);
+  const { loading, filteredProperties } = usePropertyContext();
   const itemsPerPage = 9;
 
-  // get all properties from db
-  const fetchProperties = async () => {
-    setIsloading(true);
-    try {
-      const response = await axiosInstance.get("/property/all-property");
-      const { data } = response;
-      const property = data.properties || data || [];
-      console.log(property);
-      setProperties(property);
-      setIsloading(false);
-    } catch (error) {
-      setIsloading(false);
-      console.log(error);
-    }
-  };
+  // const [loading, setIsloading] = useState(false);
+  // const [properties, setProperties] = useState([]);
 
-  useEffect(() => {
-    fetchProperties();
-  }, []);
+  // get all properties from db
+  // const fetchProperties = async () => {
+  //   setIsloading(true);
+  //   try {
+  //     const response = await axiosInstance.get("/property/all-property");
+  //     const { data } = response;
+  //     const property = data.properties || data || [];
+  //     console.log(property);
+  //     setProperties(property);
+  //     setIsloading(false);
+  //   } catch (error) {
+  //     setIsloading(false);
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchProperties();
+  // }, []);
 
   // calculate what to show
-  
-  const totalItems = properties.length;
+
+  const totalItems = filteredProperties.length;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const lastItem = Math.min(indexOfLastItem, totalItems);
   const firstItem = totalItems === 0 ? 0 : indexOfFirstItem + 1;
-  const currentItems = properties.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredProperties.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
   return (
     <div className="w-full lg:max-w-[1240px] mx-auto p-2">
       <div className="my-10 w-full flex flex-col lg:flex-row items-center justify-between">
@@ -161,7 +167,7 @@ const AllProperty = () => {
       </div>
       {/* Pagination */}
       <Pagination
-        totalItems={properties.length}
+        totalItems={filteredProperties.length}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onPageChange={setCurrentPage}

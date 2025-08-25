@@ -1,8 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { axiosInstance } from "../../utils/axiosInstance";
+import { usePropertyContext } from "../hooks/usePropertyContext";
 
 const BrosweProperty = () => {
   const [rooms, setRooms] = useState(0);
+  const { handleSearch} = usePropertyContext();
+  const [location, setLocation] = useState("");
+  const [bedrooms, setBedrooms] = useState("");
 
   const increase = () => {
     setRooms(rooms + 1);
@@ -13,6 +18,24 @@ const BrosweProperty = () => {
       setRooms(rooms - 1);
     }
   };
+
+  // const searchProperties = (locationQuery, bedroomsQuery) => {
+  //   return properties.filter((property) => {
+  //     const locationMatch = locationQuery
+  //       ? property.location.toLowerCase().includes(locationQuery.toLowerCase())
+  //       : true;
+
+  //     const bedroomsMatch = bedroomsQuery
+  //       ? property.bedrooms.toLowerCase().includes(bedroomsQuery.toLowerCase())
+  //       : true;
+
+  //     return locationMatch && bedroomsMatch;
+  //   });
+  // };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  handleSearch({ location, bedrooms }); // search via context
+};
 
   return (
     <div className="w-full lg:max-w-[1024px] lg:h-[404px] mx-auto p-2">
@@ -27,7 +50,7 @@ const BrosweProperty = () => {
       </div>
       <div className="w-full bg-[#ffffff33] lg:h-[140px] lg:py-7 px-5 mt-15 lg:mt-4 lg:my-5">
         <form
-          onClick={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           className="mb-5 lg:mb-0 w-full lg:h-[88px] rounded-[10px] bg-[#ffffff] flex flex-col lg:flex-row items-center justify-center lg:justify-between shadow-lg "
         >
           <div className="mt-5 lg:mt-0 flex flex-col items-center  border-b lg:border-b-0 lg:border-r">
@@ -36,8 +59,10 @@ const BrosweProperty = () => {
             </label>
             <input
               type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
               placeholder="e.g Gbagada"
-              className="placeholder:text-[15px] placeholder:text-[#787878] placeholder:text-center placeholder:font-[outfit] placeholder:font-[400] outline-none p-2"
+              className="placeholder:text-[15px] placeholder:text-[#787878] placeholder:text-center placeholder:font-[outfit] placeholder:font-[400] outline-none p-2 text-center"
             />
           </div>
           <div className="lg:w-[30%] flex flex-col items-center my-3 lg:my-0 border-b lg:border-b-0 lg:border-r">
@@ -56,6 +81,8 @@ const BrosweProperty = () => {
             </label>
             <div className="flex items-center gap-2 justify-between">
               <p
+                value={bedrooms}
+                onChange={(e) => setBedrooms(e.target.value)}
                 onClick={decrease}
                 className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center cursor-pointer"
               >
@@ -70,6 +97,8 @@ const BrosweProperty = () => {
               />
               <p
                 onClick={increase}
+                value={bedrooms}
+                onChange={(e) => setBedrooms(e.target.value)}
                 className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center cursor-pointer"
               >
                 +
