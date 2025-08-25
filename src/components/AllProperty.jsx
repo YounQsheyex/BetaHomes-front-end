@@ -162,7 +162,7 @@ const AllProperty = () => {
             );
           })
         ) : (
-          <p>No Property Found</p>
+          <p className="font-[700] font-[Outfit] text-[24px] mx-auto text-center">No Property Found</p>
         )}
       </div>
       {/* Pagination */}
