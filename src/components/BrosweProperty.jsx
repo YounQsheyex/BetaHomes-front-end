@@ -1,11 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { usePropertyContext } from "../hooks/usePropertyContext";
+import { ClipLoader } from "react-spinners";
 
 const BrosweProperty = () => {
   const [rooms, setRooms] = useState(0);
-  const { handleSearch } = usePropertyContext();
+  const { handleSearch, isSubmitting } = usePropertyContext();
   const [location, setLocation] = useState("");
   const [bedrooms, setBedrooms] = useState(0);
 
@@ -106,7 +107,7 @@ const BrosweProperty = () => {
           </div>
           <div className="my-3 lg:my-0 w-[230px] h-full bg-[#3d9970] rounded-lg lg:rounded-none lg:rounded-tr-[10px] lg:rounded-br-[10px]">
             <button className="p-1 md:p-5 flex justify-center mx-auto  text-center text-[#FFFFFF] text-[20px] font-[500] font-[outfit] cursor-pointer">
-              Find Property
+              {isSubmitting ? <ClipLoader color="#ffffff"/> : "Find Property"}
             </button>
           </div>
         </form>

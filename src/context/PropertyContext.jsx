@@ -7,6 +7,7 @@ const Propertyprovider = ({ children }) => {
   const [loading, setIsloading] = useState(false);
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // get all properties from db
   const fetchProperties = async () => {
@@ -31,6 +32,7 @@ const Propertyprovider = ({ children }) => {
 
   // Search function
   const handleSearch = (query) => {
+    setIsSubmitting(true);
     if (!query.location && !query.bedrooms) {
       setFilteredProperties(properties);
       return;
@@ -38,7 +40,9 @@ const Propertyprovider = ({ children }) => {
 
     const results = properties.filter((p) => {
       const matchesLocation = query.location
-        ? (p.location || "").toLowerCase().includes(location.toLowerCase())
+        ? (p.location || "")
+            .toLowerCase()
+            .includes(query.location.toLowerCase())
         : true;
 
       const matchesBedrooms = query.bedrooms
@@ -49,11 +53,18 @@ const Propertyprovider = ({ children }) => {
     });
 
     setFilteredProperties(results);
+    setIsSubmitting(false);
   };
 
   return (
     <PropertyContext.Provider
-      value={{ loading, properties, filteredProperties, handleSearch }}
+      value={{
+        loading,
+        properties,
+        filteredProperties,
+        handleSearch,
+        isSubmitting,
+      }}
     >
       {children}
     </PropertyContext.Provider>
