@@ -5,17 +5,17 @@ import { usePropertyContext } from "../hooks/usePropertyContext";
 
 const BrosweProperty = () => {
   const [rooms, setRooms] = useState(0);
-  const { handleSearch} = usePropertyContext();
+  const { handleSearch } = usePropertyContext();
   const [location, setLocation] = useState("");
-  const [bedrooms, setBedrooms] = useState("");
+  const [bedrooms, setBedrooms] = useState(0);
 
   const increase = () => {
-    setRooms(rooms + 1);
+    setBedrooms(bedrooms + 1);
   };
 
   const decrease = () => {
-    if (rooms > 0) {
-      setRooms(rooms - 1);
+    if (bedrooms > 0) {
+      setBedrooms(bedrooms - 1);
     }
   };
 
@@ -32,10 +32,10 @@ const BrosweProperty = () => {
   //     return locationMatch && bedroomsMatch;
   //   });
   // };
-const handleSubmit = (e) => {
-  e.preventDefault();
-  handleSearch({ location, bedrooms }); // search via context
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSearch({ location, bedrooms }); // search via context
+  };
 
   return (
     <div className="w-full lg:max-w-[1024px] lg:h-[404px] mx-auto p-2">
@@ -82,14 +82,14 @@ const handleSubmit = (e) => {
             <div className="flex items-center gap-2 justify-between">
               <p
                 value={bedrooms}
-                onChange={(e) => setBedrooms(e.target.value)}
                 onClick={decrease}
                 className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center cursor-pointer"
               >
                 -
               </p>
               <input
-                value={rooms}
+                value={bedrooms}
+                onChange={(e) => setBedrooms(e.target.value)}
                 readOnly
                 placeholder="0"
                 type="text"
@@ -98,7 +98,6 @@ const handleSubmit = (e) => {
               <p
                 onClick={increase}
                 value={bedrooms}
-                onChange={(e) => setBedrooms(e.target.value)}
                 className="w-[21px] h-[21px] rounded-[50px] border-[1px] flex items-center justify-center text-center cursor-pointer"
               >
                 +

@@ -30,19 +30,19 @@ const Propertyprovider = ({ children }) => {
   }, []);
 
   // Search function
-  const handleSearch = ({ location, bedrooms }) => {
-    if (!location && !bedrooms) {
-      setFilteredProperties(properties); // reset to all
+  const handleSearch = (query) => {
+    if (!query.location && !query.bedrooms) {
+      setFilteredProperties(properties);
       return;
     }
 
     const results = properties.filter((p) => {
-      const matchesLocation = location
-        ? p.location.toLowerCase().includes(location.toLowerCase())
+      const matchesLocation = query.location
+        ? (p.location || "").toLowerCase().includes(location.toLowerCase())
         : true;
 
-      const matchesBedrooms = bedrooms
-        ? String(p.bedrooms).toLowerCase().includes(bedrooms.toLowerCase())
+      const matchesBedrooms = query.bedrooms
+        ? parseInt(p.bedrooms) === Number(query.bedrooms) // extract number safely
         : true;
 
       return matchesLocation && matchesBedrooms;
@@ -52,7 +52,9 @@ const Propertyprovider = ({ children }) => {
   };
 
   return (
-    <PropertyContext.Provider value={{ loading, properties,filteredProperties,handleSearch }}>
+    <PropertyContext.Provider
+      value={{ loading, properties, filteredProperties, handleSearch }}
+    >
       {children}
     </PropertyContext.Provider>
   );
