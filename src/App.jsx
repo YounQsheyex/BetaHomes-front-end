@@ -5,6 +5,7 @@ import Register from "./components/Register";
 import SignIn from "./components/SignIn";
 import HomeLoggedin from "./components/pages/HomeLoggedin";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import VerifyEmail from "./components/pages/VerifyEmail";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-up" element={<Register />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route element={<ProtectedRoutes/>}>
+          <Route path="/verify-email/:token" element={<VerifyEmail />} />
+          <Route element={<ProtectedRoutes />}>
             <Route path="/home" element={<HomeLoggedin />} />
           </Route>
         </Routes>

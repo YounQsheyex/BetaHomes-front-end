@@ -43,6 +43,22 @@ const Register = () => {
     }
   };
 
+  const handleGoogleRegister = () => {
+    setIsSubmitting(true);
+    try {
+      const url =
+        "https://beta-house-backend-ywp5.onrender.com/auth/google/signup";
+      console.log("Redirecting to:", url);
+      window.location.href = url;
+    } catch (error) {
+      console.log(error);
+      // toast.error("Error Occured Please Try Again");
+      // setErrorMsg(error?.response?.data.message || "Registration Unsuccesfull");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="w-full lg:max-w-[1240px] mx-auto flex justify-center items-center gap-10 lg:mt-5">
       <div className="w-full lg:max-w-[482px] p-7 ">
@@ -204,7 +220,7 @@ const Register = () => {
           <img src={liner} alt="" />
         </div>
         <button
-          onClick={(e) => e.preventDefault()}
+          onClick={handleGoogleRegister}
           className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929]  cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center"
         >
           <img src={google} alt="google" />
