@@ -69,7 +69,7 @@ const VerifyEmail = () => {
           <p className="text-[#666] mb-4">
             Your account has been verified successfully
           </p>
-          <Link to={"/login"}>
+          <Link to={"/sign-in"}>
             <button className="w-full font-semibold rounded-xl bg-[#0c0c0c] text-white h-[56px]">
               Proceed to Login
             </button>
