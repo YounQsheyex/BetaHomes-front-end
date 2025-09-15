@@ -55,6 +55,9 @@ const SignIn = () => {
         "https://beta-house-backend-ywp5.onrender.com/auth/google/login";
       console.log("redirecting to:", response);
       window.location.href = response;
+      login(response.token, response.user);
+      console.log(response);
+
       if (response === 200) {
         redirect("/home");
       }
