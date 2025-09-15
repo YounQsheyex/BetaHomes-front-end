@@ -4,7 +4,7 @@ import google from "../assets/google.png";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/formValidator";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAppContext } from "../hooks/useAppContext";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { useState } from "react";
@@ -18,6 +18,7 @@ import { useEffect } from "react";
 const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const redirect = useNavigate();
+  const location = useLocation();
   const [errorMsg, setErrorMsg] = useState("");
   const { login, user } = useAppContext();
 
