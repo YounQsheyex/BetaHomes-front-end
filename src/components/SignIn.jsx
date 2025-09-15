@@ -48,6 +48,20 @@ const SignIn = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    setIsSubmitting(true);
+    try {
+      const url =
+        "https://beta-house-backend-ywp5.onrender.com/auth/google/login";
+      console.log("redirecting to:", url);
+      window.location.href = url;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="w-full lg:max-w-[1240px] flex justify-center items-center gap-10 mx-auto  lg:mt-5">
       <div className="w-full lg:w-[482px] p-7 m-3">
@@ -144,7 +158,7 @@ const SignIn = () => {
           <img src={liner} alt="" />
         </div>
         <button
-          onClick={(e) => e.preventDefault()}
+          onClick={handleGoogleLogin}
           className="w-full h-[65px]  rounded-[15px] font-[outfit] font-[400] text-[22px] text-[#292929] cursor-pointer border-[1px] border-[#000000] flex items-center gap-3 justify-center"
         >
           <img src={google} alt="google" />

@@ -50,10 +50,11 @@ const Register = () => {
         "https://beta-house-backend-ywp5.onrender.com/auth/google/signup";
       console.log("Redirecting to:", url);
       window.location.href = url;
+     
     } catch (error) {
       console.log(error);
-      // toast.error("Error Occured Please Try Again");
-      // setErrorMsg(error?.response?.data.message || "Registration Unsuccesfull");
+      toast.error("Error Occured Please Try Again");
+      setErrorMsg(error?.response?.data.message || "Registration Unsuccesfull");
     } finally {
       setIsSubmitting(false);
     }
