@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import liner from "../assets/liner.png";
 import linel from "../assets/linel.png";
 import { PiWarningCircle } from "react-icons/pi";
+import { useEffect } from "react";
 
 const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,24 +50,27 @@ const SignIn = () => {
   };
 
   const handleGoogleLogin = () => {
-    setIsSubmitting(true);
-    try {
-      const response =
-        "https://beta-house-backend-ywp5.onrender.com/auth/google/login";
-      console.log("redirecting to:", response);
-      window.location.href = response;
-      login(response.token, response.user);
-      console.log(response);
-
-      if (response === 200) {
-        redirect("/home");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    const response =
+      "https://beta-house-backend-ywp5.onrender.com/auth/google/login";
+    console.log("redirecting to:", response);
+    window.location.href = response;
   };
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const token = queryParams.get("token");
+    const user = queryParams.get("user");
+
+    if (token && user) {
+      try {
+        const parsedUser = JSON.parse(decodeURIComponent(user));
+        login(token, parsedUser);
+        redirect("/home", { replace: true });
+      } catch (err) {
+        console.error("Error parsing Google user:", err);
+      }
+    }
+  }, [location, login, redirect]);
 
   return (
     <div className="w-full lg:max-w-[1240px] flex justify-center items-center gap-10 mx-auto  lg:mt-5">
