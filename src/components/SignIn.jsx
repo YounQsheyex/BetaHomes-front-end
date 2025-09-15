@@ -51,10 +51,13 @@ const SignIn = () => {
   const handleGoogleLogin = () => {
     setIsSubmitting(true);
     try {
-      const url =
+      const response =
         "https://beta-house-backend-ywp5.onrender.com/auth/google/login";
       console.log("redirecting to:", url);
-      window.location.href = url;
+      window.location.href = response;
+      if (response === 200) {
+        redirect("/home");
+      }
     } catch (error) {
       console.log(error);
     } finally {
